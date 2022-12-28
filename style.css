@@ -1,0 +1,208 @@
+
+    /* Style the login form */
+    body {
+      font-family: Arial, helvetica;
+      background-color: #f1f1f1;
+    }
+    /* Style the login form */
+.login-form {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: none;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: helvetica;
+  position: relative;
+  top: 10%;
+  transform: translateY(20%);
+}
+
+/* Style the form fields */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  margin: 18px 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+/* Style the submit button */
+.login-form input[type="submit"] {
+  width: 50%;
+  border: center;
+  background: green;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 80px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+
+.login-form input[type="submit"]:hover {
+  background: #45a049;
+}
+
+/* Style the "Forgot password" link */
+.login-form a {
+  color: red;
+  font-size: 14px;
+  margin: 3px;
+  padding: 50px;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.login-form a:hover {
+  color: #45a049;
+}
+
+/* Style the reset password form */
+.reset-form {
+  display: none;
+  max-width: 100%;
+  margin: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: helvetica;
+  text-align: center;
+  position: relative;
+  top: 10%;
+  transform: translateY(30%);
+}
+
+/* Style the form fields */
+.reset-form input[type="email"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  margin: 18px 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+/* Style the submit button */
+.reset-form input[type="submit"] {
+  width: 100%;
+  border: center;
+  background: #4caf50;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+
+.reset-form input[type="submit"]:hover {
+  background: #45a049;
+}
+/* Style the "Back to Login" button */
+    .reset-form button {
+      width: 30%;
+      border: center;
+      background: green;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+      border-radius: 4px;
+    }
+    
+
+/* Use media queries to make the login form have the same appearance on both desktop and mobile devices */
+@media (min-width: 500px) {
+  .login-form {
+    width: 400px;
+  }
+}
+
+@media (max-width: 499px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+/* Use media queries to adjust the font size of the form fields on small screens */
+@media (max-width: 499px) {
+  .login-form input[type="email"],
+  .login-form input[type="password"],
+   .login-form input[type="submit"],
+  .reset-form input[type="email"] {
+    font-size: 14px;
+    
+  }
+}
+
+/* Use media queries to make the reset password form have the same appearance on both desktop and mobile devices */
+@media (min-width: 500px) {
+  .reset-form {
+    width: 400px;
+  }
+}
+
+@media (max-width: 499px) {
+  .reset-form {
+    width: 90%;
+  }
+}
+
+/* Use media queries to adjust the font size of the form fields on small screens */
+@media (max-width: 499px) {
+  .reset-form input[type="email"] {
+    font-size: 14px;
+  }
+}
+.reset-form button:hover {
+      background: #999;
+    }
+
+ /* Style the error and success messages */
+    .error-message,
+    .success-message {
+      font-size: 14px;
+      color: red;
+      margin: 10px 0;
+    }
+
+    .success-message {
+      color: green;
+    }
+    footer {
+    background-color: none;
+    font-weight: bold;
+  }
+
+  /* Style the copyright notice */
+  .copyright {
+    font-size: 17px;
+    color: #666;
+    text-align: center;
+  }
+ 

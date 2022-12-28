@@ -1,0 +1,152 @@
+<DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <form class="login-form" method="post" data-netlify="true">
+    <h1>Login</h1>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+      <input type="checkbox" id="remember-me" name="remember-me">
+      <label for="remember-me">Remember me</label><br>
+    <input type="submit" value="Login">
+    <a href="#" onclick="showResetForm()">Forgot password?</a>
+  <footer>
+    <!-- Add a copyright notice -->
+   <i> <p class="copyright">&copy; Blue company, 2022</p></i>
+  </footer>
+
+  </form>
+  <form class="reset-form" method="post">
+    <h1>Reset Password</h1>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="submit" value="Send Reset Email">
+    <button type="button" onclick="showLoginForm()">Login</button>
+      <footer>
+    <!-- Add a copyright notice -->
+   <i> <p class="copyright">&copy; Blue company, 2022</p></i>
+  </footer>
+
+  </form>
+
+   <script>
+       //Function to show the reset password form
+function showResetForm() {
+    document.querySelector('.login-form').style.display = 'none';
+    document.querySelector('.reset-form').style.display = 'block';
+}
+// Function to show the login form
+function showLoginForm() {
+    document.querySelector('.reset-form').style.display = 'none';
+    document.querySelector('.login-form').style.display = 'block';
+}
+// Function to submit the login form asynchronously using AJAX
+function submitLoginForm() {
+    // Get the form element and the email and password fields
+    const form = document.querySelector('.login-form');
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[type="password"]').value;
+    const data = {
+        email: email,
+        password: password
+    };
+    // Remove any existing error messages
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(function(errorMessage) {
+        errorMessage.remove();
+    });
+    // Send the login request to the server
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/login', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Successful login, redirect the user
+            window.location = '/dashboard';
+        } else {
+            // Unsuccessful login, display an error message
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message');
+            errorMessage.innerHTML = 'Invalid email or password';
+            form.prepend(errorMessage);
+        }
+    };
+    xhr.send(JSON.stringify(data));
+}
+// Function to submit the reset password form asynchronously using AJAX
+function submitResetForm() {
+    // Get the form element and the email field
+    const form = document.querySelector('.reset-form');
+    const email = form.querySelector('input[type="email"]').value;
+    // Remove any existing error or success messages
+    const messages = document.querySelectorAll('.error-message, .success-message');
+    messages.forEach(function(message) {
+        message.remove();
+    });
+    // Send the reset password request to the server
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/reset-password', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Successful reset password request, display a success message
+            const successMessage = document.createElement('p');
+            successMessage.classList.add('success-message');
+            successMessage.innerHTML = 'Reset password email sent';
+            form.prepend(successMessage);
+        } else {
+            // Unsuccessful reset password request, display an error message
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message');
+            errorMessage.innerHTML = 'Error sending reset password email';
+            form.prepend(errorMessage);
+        }
+    };
+    xhr.send(JSON.stringify({
+        email: email
+    }));
+}
+// Add event listeners to the submit buttons to submit the forms
+// Add event listeners to the submit buttons to submit the forms asynchronously
+document.querySelector('.login-form input[type="submit"]').addEventListener('click', function(event) {
+    event.preventDefault();
+    submitLoginForm();
+});
+document.querySelector('.reset-form input[type="submit"]').addEventListener('click', function(event) {
+    event.preventDefault();
+    submitResetForm();
+});
+document.getElementById("remember-me").addEventListener("change", function() {
+    // Get the current value of the "Remember me" checkbox
+    var rememberMe = this.checked;
+
+    // Use AJAX to send a POST request to the server with the "Remember me" value
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/remember-me", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({
+        rememberMe: rememberMe
+    }));
+});
+   </script>
+
+
+  </body>
+  </html>
+  
+
+    
+ 
+
+    
+
+    
